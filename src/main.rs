@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::env::args;
 
 fn main() {
     const GBP_THB: f64 = 44.3490;
@@ -32,6 +33,8 @@ fn main() {
         conversions.insert("USD", THB_USD);
         conversions
     });
+
+    let args: Vec<String> = args().collect();
 }
 
 /*

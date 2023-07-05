@@ -1,13 +1,14 @@
-conversion_rates.insert("THB", {
-    let mut other_rates = HashMap::new();
-    other_rates.insert("GBP", <thb_to_gbp_conversion_rate>);
-    other_rates.insert("USD", 0.0);  // Placeholder for future implementation
-    other_rates
-});
+fn main() {
+    let args: Vec<String> = std::env::args().collect();
 
-conversion_rates.insert("GBP", {
-    let mut other_rates = HashMap::new();
-    other_rates.insert("THB", <gbp_to_thb_conversion_rate>);
-    other_rates.insert("USD", 0.0);  // Placeholder for future implementation
-    other_rates
-});
+    if args.len() < 4 {
+        eprintln!("Not enough arguments! Usage: conv [AMOUNT] [CURRENCY_FROM] [CURRENCY_TO]");
+        return;
+    }
+
+    let amount: f64 = args[1].parse().expect("The first argument is not a valid number!");
+    let currency_from = &args[2];
+    let currency_to = &args[3];
+
+    // Your conversion code goes here.
+}
