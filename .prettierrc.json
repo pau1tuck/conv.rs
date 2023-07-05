@@ -1,0 +1,9 @@
+{
+    "plugins": [
+        "/usr/lib/node_modules/prettier-plugin-rust"
+    ],
+    "useTabs": true,
+    "tabWidth": 4,
+    "printWidth": 100,
+    "endOfLine": "lf"
+}
