@@ -1,14 +1,1 @@
-fn main() {
-    let args: Vec<String> = std::env::args().collect();
-
-    if args.len() < 4 {
-        eprintln!("Not enough arguments! Usage: conv [AMOUNT] [CURRENCY_FROM] [CURRENCY_TO]");
-        return;
-    }
-
-    let amount: f64 = args[1].parse().expect("The first argument is not a valid number!");
-    let currency_from = &args[2];
-    let currency_to = &args[3];
-
-    // Your conversion code goes here.
-}
+https://github.com/fawazahmed0/currency-api#readme
