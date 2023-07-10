@@ -1,0 +1,10 @@
+{
+  "name": "conv.ts",
+  "description": "A universal unit and currency converter",
+  "version": "1.1.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/pau1tuck/conv.git",
+  "author": "Paul D.R. Tuck",
+  "license": "ICT",
+  "private": true
+}
