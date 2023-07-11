@@ -1,10 +1,40 @@
 {
-  "name": "conv.ts",
-  "description": "A universal unit and currency converter",
-  "version": "1.1.0",
-  "main": "dist/index.js",
-  "repository": "https://github.com/pau1tuck/conv.git",
-  "author": "Paul D.R. Tuck",
-  "license": "ICT",
-  "private": true
+    "name": "conv.ts",
+    "version": "1.1.0",
+    "description": "A universal unit conversion tool",
+    "type": "module",
+    "experimental-json-modules": true,
+    "private": true,
+    "authors": {
+        "name": "Paul D.R. Tuck",
+        "email": "p6ul.tuck@gmail.com"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pau1tuck/polybar.git"
+    },
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
+        "start": "node dist/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.1",
+        "dotenv": "^16.3.1",
+        "eslint": "^8.40.0",
+        "eslint-config-airbnb-typescript-prettier": "^5.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "prettier": "^2.8.8",
+        "ts-node": "^10.9.1",
+        "tslib": "^2.6.0",
+        "tsnodemon": "^1.2.2",
+        "typescript": "^5.1.6"
+    },
+    "dependencies": {
+        "axios": "^1.4.0"
+    }
 }
