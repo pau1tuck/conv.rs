@@ -7,7 +7,7 @@ import config from "./config.json" assert { type: "json" };
     fs.readFileSync(path.resolve(__dirname, "../config.json"), "utf-8"),
 );*/
 
-const currencies = config.currencies;
+const currencies = ["aus"];
 
 let exchangeRates = [];
 
@@ -15,11 +15,6 @@ for (let i = 0; i < currencies.length; i++) {
     let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currencies[
         i
     ].toLowerCase()}.json`;
-
-    const options = {
-        method: "GET",
-        url,
-    };
 
     try {
         const response = await axios.request({ method: "GET", url });
