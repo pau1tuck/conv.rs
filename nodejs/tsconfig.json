@@ -7,7 +7,7 @@
             "es2021"
         ],
         "baseUrl": ".",
-        "outDir": "./dist",
+        "outDir": "./public",
         "rootDir": "./src",
         "strict": true,
         "noEmit": false,
