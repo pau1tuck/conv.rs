@@ -15,6 +15,6 @@ if (fs_1.default.existsSync(ratesPath)) {
     readRates();
 }
 else {
-    console.log("Currency rate file does not exist. Fetching rates...");
+    console.log("Fetching latest currency rates...");
     (0, fetch_rates_1.fetchRates)();
 }

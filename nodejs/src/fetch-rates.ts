@@ -8,7 +8,7 @@ import axios from "axios";
 );*/
 
 // const RATES_URL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
-
+console.time("Done in");
 const currencies = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), "data/currencies.json"), "utf8"),
 );
@@ -23,7 +23,7 @@ export const fetchRates = async () => {
                     method: "GET",
                     url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
                 });
-                console.log(`✓ ${currencies[key]}: Status ${response.status}`);
+                // console.log(`✓ ${currencies[key]}: Status ${response.status}`);
                 rates.push(response.data);
             } catch (err) {
                 throw new Error(`Error: ${err}`);
@@ -36,4 +36,5 @@ export const fetchRates = async () => {
         path.join(process.cwd(), "data/rates.json"),
         JSON.stringify(rates, null, 2),
     );
+    console.timeEnd("Done in");
 };

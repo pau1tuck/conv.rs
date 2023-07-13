@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const fs_1 = tslib_1.__importDefault(require("fs"));
 const path_1 = tslib_1.__importDefault(require("path"));
 const axios_1 = tslib_1.__importDefault(require("axios"));
+console.time("Done in");
 const currencies = JSON.parse(fs_1.default.readFileSync(path_1.default.join(process.cwd(), "data/currencies.json"), "utf8"));
 let rates = [];
 const fetchRates = async () => {
@@ -15,7 +16,6 @@ const fetchRates = async () => {
                     method: "GET",
                     url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
                 });
-                console.log(`✓ ${currencies[key]}: Status ${response.status}`);
                 rates.push(response.data);
             }
             catch (err) {
@@ -26,5 +26,6 @@ const fetchRates = async () => {
         }
     }
     fs_1.default.writeFileSync(path_1.default.join(process.cwd(), "data/rates.json"), JSON.stringify(rates, null, 2));
+    console.timeEnd("Done in");
 };
 exports.fetchRates = fetchRates;
