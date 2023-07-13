@@ -7,10 +7,17 @@ import config from "./config.json" assert { type: "json" };
     fs.readFileSync(path.resolve(__dirname, "../config.json"), "utf-8"),
 );*/
 
-const currencies = ["aus"];
+const RATES_URL = "";
 
-let exchangeRates = [];
+let rates = [];
 
+const CURRENCIES = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "data/currencies.json"), "utf8"),
+);
+
+console.log(CURRENCIES.azn);
+
+/*
 for (let i = 0; i < currencies.length; i++) {
     let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currencies[
         i
@@ -27,3 +34,4 @@ for (let i = 0; i < currencies.length; i++) {
 }
 
 console.log(exchangeRates);
+*/
