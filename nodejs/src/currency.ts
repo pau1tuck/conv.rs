@@ -6,6 +6,13 @@ import { fetchRates } from "./fetch-rates";
 const ratesPath = path.join(process.cwd(), "data/rates.json");
 let rates: any = [];
 let lastUpdate: any = null;
+const date = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getDate() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
+    return `${yyyy}-${mm}-${dd}`;
+};
 
 // Check the existence of rates.json or update()
 const readRates = () => {
@@ -18,7 +25,7 @@ if (fs.existsSync(ratesPath)) {
     console.log("Currency rate data exists.");
     readRates();
 } else {
-    console.log("Fetching currency rate data...");
+    process.stdout.write("Fetching currency rate data...");
     fetchRates();
 }
 

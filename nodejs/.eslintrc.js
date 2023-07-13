@@ -3,18 +3,30 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2023,
         sourceType: "module", // Allows for the use of imports
+        project: "tsconfig.json",
+        tsconfigRootDir: __dirname,
+    },
+    root: true,
+    plugins: [
+        "@typescript-eslint/eslint-plugin",
+        "import",
+        "sort-keys-fix",
+        "simple-import-sort",
+    ],
+    env: {
+        node: true,
+        jest: true,
     },
     extends: [
         "airbnb-typescript-prettier",
-        "plugin:@typescript-eslint/recommended",
+        // "plugin:@typescript-eslint/recommended",
         // "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+        "plugin:prettier/recommended",
     ],
-    plugins: ["import", "sort-keys-fix", "simple-import-sort"],
     rules: {
         "import/prefer-default-export": [0], // off
         "no-console": [1], // warn
-        "max-classes-per-file": 1, // error
+        "max-classes-per-file": [1], // error
         "class-methods-use-this": [2],
         "@typescript-eslint/no-explicit-any": [
             "warn",
@@ -23,6 +35,12 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": [
             "warn",
             { argsIgnorePattern: "^_" },
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                endOfLine: "auto",
+            },
         ],
     },
 };
