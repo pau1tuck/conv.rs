@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import axios from "axios";
-import config from "./config.json" assert { type: "json" };
+// import config from "./config.json" assert { type: "json" };
 
 /*const settings = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../config.json"), "utf-8"),
@@ -15,7 +15,7 @@ const currencies = JSON.parse(
 
 let rates: any = [];
 
-export async function fetchRates() {
+export const fetchRates = async () => {
     for (let key in currencies) {
         if (currencies.hasOwnProperty(key)) {
             try {
@@ -36,4 +36,4 @@ export async function fetchRates() {
         path.join(process.cwd(), "data/rates.json"),
         JSON.stringify(rates, null, 2),
     );
-}
+};

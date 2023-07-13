@@ -1,22 +1,21 @@
 {
+    /***
+As a general rule, if you're writing a Node.js application in TypeScript, it's usually easier to stick with CommonJS modules and leave "type": "module" out of your package.json. 
+***/
     "compilerOptions": {
         "target": "es2021",
-        "module": "esnext",
+        "module": "commonjs",
         "moduleResolution": "node",
         "lib": [
             "es2021"
         ],
-        "baseUrl": ".",
-        "outDir": "./public",
-        "rootDir": "./src",
+        "baseUrl": "src",
+        "outDir": "public",
+        "rootDir": "src",
         "strict": true,
-        "noEmit": false,
-        "incremental": true,
-        "skipLibCheck": true,
-        "sourceMap": true,
         "allowJs": false,
-        "checkJs": false,
         "allowSyntheticDefaultImports": true,
+        "checkJs": false,
         "declaration": true,
         "downlevelIteration": true,
         "emitDecoratorMetadata": true,
@@ -24,6 +23,8 @@
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
+        "incremental": true,
+        "noEmit": false,
         "noFallthroughCasesInSwitch": true,
         "noImplicitAny": true,
         "noImplicitThis": true,
@@ -31,6 +32,8 @@
         "noUnusedParameters": false,
         "removeComments": true,
         "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": false,
         "strictFunctionTypes": true,
         "strictNullChecks": true,
         "paths": {
