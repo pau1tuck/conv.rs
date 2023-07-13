@@ -6,7 +6,7 @@ const fs_1 = tslib_1.__importDefault(require("fs"));
 const path_1 = tslib_1.__importDefault(require("path"));
 const axios_1 = tslib_1.__importDefault(require("axios"));
 const currencies = JSON.parse(fs_1.default.readFileSync(path_1.default.join(process.cwd(), "data/currencies.json"), "utf8"));
-let rates = [];
+const rates = [];
 const fetchRates = async () => {
     const start = process.hrtime();
     const keys = Object.keys(currencies);
@@ -17,7 +17,6 @@ const fetchRates = async () => {
                 url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
             });
             rates.push(response.data);
-            console.log(currencies[key], " retrieved.");
         }
         catch (err) {
             throw new Error(`Error: ${err}`);
@@ -27,6 +26,6 @@ const fetchRates = async () => {
     fs_1.default.writeFileSync(path_1.default.join(process.cwd(), "data/rates.json"), JSON.stringify(rates, null, 2));
     const hrtime = process.hrtime(start);
     const elapsed = hrtime[0] + hrtime[1] / 1e9;
-    process.stdout.write(`Done in ${elapsed.toFixed(3)}ms\n`);
+    process.stdout.write(`Done in ${elapsed.toFixed(3)}ms.\n`);
 };
 exports.fetchRates = fetchRates;

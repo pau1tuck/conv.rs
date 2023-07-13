@@ -24,6 +24,6 @@ if (fs_1.default.existsSync(ratesPath)) {
     readRates();
 }
 else {
-    process.stdout.write("Fetching currency rate data...");
+    process.stdout.write("Fetching currency rates...");
     (0, fetch_rates_1.fetchRates)();
 }

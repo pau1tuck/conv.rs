@@ -18,11 +18,11 @@ const date = () => {
 const readRates = () => {
     rates = JSON.parse(fs.readFileSync(ratesPath, "utf8"));
     lastUpdate = rates[0].date;
-    console.log(lastUpdate);
+    // eslint-disable-next-line no-console
+    console.log("Last update:", lastUpdate);
 };
 
 if (fs.existsSync(ratesPath)) {
-    console.log("Currency rate data exists.");
     readRates();
 } else {
     process.stdout.write("Fetching currency rates...");
