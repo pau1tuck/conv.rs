@@ -25,7 +25,13 @@ const currencies = JSON.parse(
 // console.log(CURRENCIES["azn"]);
 
 for (let key in currencies) {
-    console.log(currencies[key]);
+    // console.log(currencies[key]);
+    if (currencies.hasOwnProperty(key)) {
+        try {
+            const response = axios.request({ method: "GET", url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key.toLowerCase()}.json`})
+        }
+    catch (err) { throw new Error(`Error: ${err}`)}
+
     /*
     let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currencies[
         key
