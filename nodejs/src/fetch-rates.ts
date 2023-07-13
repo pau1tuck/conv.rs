@@ -13,7 +13,7 @@ const currencies = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), "data/currencies.json"), "utf8"),
 );
 
-let rates: any = [];
+const rates: any = [];
 
 export const fetchRates = async () => {
     const start = process.hrtime();
@@ -25,7 +25,7 @@ export const fetchRates = async () => {
                 url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
             });
             rates.push(response.data);
-            console.log(currencies[key], "retrieved");
+            // console.log(currencies[key], "retrieved");
         } catch (err) {
             throw new Error(`Error: ${err}`);
         }
