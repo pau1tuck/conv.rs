@@ -7,20 +7,28 @@ import config from "./config.json" assert { type: "json" };
     fs.readFileSync(path.resolve(__dirname, "../config.json"), "utf-8"),
 );*/
 
-const RATES_URL = "";
+// const RATES_URL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
 
-let rates = [];
+let rates = [
+    {
+        eur: {
+            aave: 0.014897,
+            ada: 3.88929,
+        },
+    },
+];
 
-const CURRENCIES = JSON.parse(
+const currencies = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), "data/currencies.json"), "utf8"),
 );
 
-console.log(CURRENCIES.azn);
+// console.log(CURRENCIES["azn"]);
 
-/*
-for (let i = 0; i < currencies.length; i++) {
+for (let key in currencies) {
+    console.log(currencies[key]);
+    /*
     let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currencies[
-        i
+        key
     ].toLowerCase()}.json`;
 
     try {
@@ -30,8 +38,5 @@ for (let i = 0; i < currencies.length; i++) {
         exchangeRates.push(jsonData);
     } catch (error) {
         console.log(error);
-    }
+    }*/
 }
-
-console.log(exchangeRates);
-*/
