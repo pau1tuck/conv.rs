@@ -8,7 +8,7 @@ import axios from "axios";
 );*/
 
 // const RATES_URL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
-console.time("Done in");
+// console.time("Done in");
 const currencies = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), "data/currencies.json"), "utf8"),
 );
@@ -16,25 +16,31 @@ const currencies = JSON.parse(
 let rates: any = [];
 
 export const fetchRates = async () => {
-    for (let key in currencies) {
-        if (currencies.hasOwnProperty(key)) {
-            try {
-                const response = await axios.request({
-                    method: "GET",
-                    url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
-                });
-                // console.log(`✓ ${currencies[key]}: Status ${response.status}`);
-                rates.push(response.data);
-            } catch (err) {
-                throw new Error(`Error: ${err}`);
-            } finally {
-            }
+    const start = process.hrtime();
+    const keys = Object.keys(currencies);
+    const promises = keys.map(async key => {
+        try {
+            const response = await axios.request({
+                method: "GET",
+                url: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${key}.json`,
+            });
+            rates.push(response.data);
+            console.log(currencies[key], "retrieved");
+        } catch (err) {
+            throw new Error(`Error: ${err}`);
         }
-    }
+    });
+
+    await Promise.all(promises);
 
     fs.writeFileSync(
         path.join(process.cwd(), "data/rates.json"),
         JSON.stringify(rates, null, 2),
     );
-    console.timeEnd("Done in");
+    const hrtime = process.hrtime(start);
+    const elapsed = hrtime[0] + hrtime[1] / 1e9; // convert to seconds
+    // const elapsed = hrtime[0] * 1000 + hrtime[1] / 1e6; // convert to milliseconds
+
+    process.stdout.write(`Done in ${elapsed.toFixed(3)}ms.\n`);
+    // console.timeEnd("Done in");
 };
