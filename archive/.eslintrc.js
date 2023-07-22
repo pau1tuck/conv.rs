@@ -6,6 +6,11 @@ module.exports = {
         project: "tsconfig.json",
         tsconfigRootDir: __dirname,
     },
+    env: {
+        node: true,
+        es6: true,
+        root: true,
+    },
     root: true,
     plugins: [
         "@typescript-eslint/eslint-plugin",
@@ -13,10 +18,6 @@ module.exports = {
         "sort-keys-fix",
         "simple-import-sort",
     ],
-    env: {
-        node: true,
-        jest: true,
-    },
     extends: [
         "airbnb-typescript-prettier",
         // "plugin:@typescript-eslint/recommended",
